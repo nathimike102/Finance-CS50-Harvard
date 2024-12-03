@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Leaderboard
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead id="leaderboard_head">
+            <tr>
+                <th>Rank</th>
+                <th>User</th>
+                <th>Cash</th>
+                <th>Stock</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="leaderboard_body">
+            {% for user in leaderboard %}
+                <tr>
+                    {% set stock = user.grand_total - user.cash %}
+                    {% if loop.index <= 3 %}
+                        <td><strong>{{ loop.index }}</strong></td>
+                        <td><strong>{{ user.username }}</strong></td>
+                        <td><strong>{{ user.cash | usd }}</strong></td>
+                        <td><strong>{{ stock | usd}}</strong></td>
+                        <td><strong>{{ user.grand_total | usd}}</strong></td>
+                    {% else %}
+                        <td>{{ loop.index }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.cash | usd}}</td>
+                        <td>{{ stock | usd}}</td>
+                        <td>{{ user.grand_total | usd}}</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

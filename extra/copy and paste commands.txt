@@ -1,0 +1,13 @@
+RohanMuppa
+
+// Flask won't stay active once you refresh it so make sure to use the debugger while using Flask to combat this
+git pull
+cd MyPages
+debug50 application.py
+
+cd MyPages
+export API_KEY=pk_a09d64a28bbb44f38da2ba87ba13bf0a
+flask run
+
+for num in range(1000):
+    print(__)
