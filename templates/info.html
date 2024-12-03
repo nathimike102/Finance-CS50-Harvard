@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Information
+{% endblock %}
+
+{% block main %}
+<div class="text-left">
+    <h1>Finance</h1>
+    <p>
+        Finance is a web project created as an assignment for week 9 of Harvard CS50 by Rohan Muppa on the week of July 3rd 2021 (7/3/21) to July 15th 2021 (7/15/21).
+        The application was made using Python, HTML (w/ Jinja), CSS, and Javascript using the Flask web framework.
+        It uses the IEX API to get the stock prices in real time and a SQL database to store user and transaction information.
+    </p>
+
+    <p>Once you register and log yourself in there will be 5 main sections:</p>
+
+    <ul>
+      <li>
+          <b>Portfolio</b> is the default route that is opened up once you log in.
+          Portfolio will present to you all the stocks you own along with some details about it.
+          Portfolio also provides you with your current cash balance, and your combined net worth.
+      </li>
+      <li>
+          <b>Quote</b> allows you to enter a stock ticker then fetches you the current price of it using the IEX API.
+      </li>
+      <li>
+          <b>Buy</b> allows you to purchase your desired stocks.
+          Enter the stock ticker and the amount of shares you want to buy then the transaction will proceed and your information will be updated to the SQL database.
+          An error will occur if you cannot afford that many shares or if you enter an invalid stock ticker.
+      </li>
+      <li>
+          <b>Sell</b> allows you to sell shares of any stock you own.
+          Select the stock then enter the number of shares you would like to sell.
+          An error will occur if you choose to sell more shares than you currently own.
+      </li>
+      <li>
+          <b>History</b> will present all the previous transactions you've made.
+          The ticker symbol; number of shares; purchase price; total amount, in US dollars, spent during that
+          transaction; and the time of transaction in UTC (Coordinated Universal Time) will all be displayed to you on the screen.
+      </li>
+    </ul>
+    <h1>Extras</h1>
+        <ul>
+          <li>
+              <b>Log out</b> clears all your cookies effectively logging you out, prompting you to log in (or register) again.
+          </li>
+          <li>
+              <b>Information</b> opens a page giving you more information about the website and it's functionality.
+          </li>
+          <li>
+              <b>Leaderboard</b> displays to you the top 10 users, emphasizing the top 3, in terms of total earnings.
+          </li>
+          <li>
+              <b>Admins</b> is a page open to admins, which you can register as using a valid admin code, that gives the admin options to alter and test user accounts,
+              as you can log in as an admin and member at the same time using separate accounts.
+          </li>
+        </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block js %}
+    function yesnoCheck(that) {
+        let code = document.getElementById("amount")
+        if (that.value != null) {
+            code.style.display = "block";
+        } else {
+            code.style.display = "none";
+        }
+    }
+{% endblock %}
+
+{% block title %}
+    Admin
+{% endblock %}
+
+{% block main %}
+    <h5>Admins</h5>
+    <form action="/admins" method="post">
+        <div class="form-group">
+            <select class="form-control" name="action" id="action" required>
+                <option disabled="" selected="" value="" disabled>Action</option>
+                <option value="adjust_balance">Adjust balance</option>
+            </select>
+
+            <select class="form-control" name="users" id="users" onchange="yesnoCheck(this);" required>
+                <option disabled="" selected="" value="" disabled>User</option>
+            {% for user in users %}
+                <option value="{{user.username}}">{{ user.username }}</option>
+            {% endfor %}
+            </select>
+            <div class="form-group">
+                <input class="form-control" name="amount" id="amount" placeholder="Amount" type="number" style="display: none;" required min="-10000" max="10000">
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+{% endblock %}

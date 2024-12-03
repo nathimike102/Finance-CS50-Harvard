@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block js %}
+    function yesnoCheck(that) {
+        let code = document.getElementById("admin_code")
+        if (that.value == "admin") {
+            code.style.display = "block";
+        } else {
+            code.style.display = "none";
+        }
+    }
+{% endblock %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="/register" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text" minlength="4" maxlength="14" required>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password" minlength="8" maxlength="20" required>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="confirmation" placeholder="Password (again)" minlength="8" maxlength="20" type="password" required>
+        </div>
+        <div class="form-group">
+            <select class="form-control" name="user_type" id="user_type" onchange="yesnoCheck(this);" required>
+                <option value="member">Member</option>
+                <option value="admin">Admin</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" name="admin_code" id="admin_code" placeholder="Admin code" type="password" style="display: none;">
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+{% endblock %}
+

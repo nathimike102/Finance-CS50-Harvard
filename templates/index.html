@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>TOTAL</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stock in holdings %}
+            <tr>
+                <td><strong>{{ stock["symbol"].upper() }}</strong></td>
+                <td>{{ stock.name }}</td>
+                <td>{{ stock["SUM(shares)"] }}</td>
+                <td>{{ stock.price }}</td>
+                <td>{{ stock.total | usd}}</td> <!-- Converted to USD because in Python the function couldn't work
+                                                         since it needed to be added to grand_total which is an integer and usd() changes
+                                                         to a string. So to reduce redundancy of using function again in Python just did
+                                                         it once here.
+                                                         -->
+            </tr>
+        {% endfor %}
+        <tr>
+            <!-- Added 4 blank cells because the colspan="4" attribute isn't formatting correctly in the table -->
+            <td><strong>CASH</strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><strong>{{ cash }}</strong></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4"></td>
+            <td><strong>{{ grand_total}}</strong></td>
+        </tr>
+    </tfoot>
+</table>
+{% endblock %}

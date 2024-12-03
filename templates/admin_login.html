@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Admin Log in
+{% endblock %}
+
+{% block main %}
+    <h6>Admins only!</h6>
+    <form action="/admins/login" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text" required>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Log In</button>
+    </form>
+{% endblock %}
