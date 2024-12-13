@@ -1,5 +1,3 @@
-![Image of stock portfolio](/static/finance.jpg)
-
 # Finance
 Finance is a web project created as an assignment for week 9 of Harvard CS50 by Nkosinathi Sibanda in the year 2024. The application was made using Python, HTML (w/ Jinja), CSS, and Javascript using the Flask web framework. It uses the IEX API to get the stock prices in real time and a SQL database to store user and transaction information.
 
